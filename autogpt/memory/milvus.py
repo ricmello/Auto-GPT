@@ -43,7 +43,7 @@ class MilvusMemory(MemoryProviderSingleton):
                 "embeddings",
                 {
                     "metric_type": "IP",
-                    "index_type": "HNSW",
+                    "index_type": "AUTOINDEX",
                     "params": {"M": 8, "efConstruction": 64},
                 },
                 index_name="embeddings",
