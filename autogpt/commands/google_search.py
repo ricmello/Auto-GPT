@@ -8,7 +8,6 @@ from autogpt.config import Config
 
 CFG = Config()
 
-
 def google_search(query: str, num_results: int = 8) -> str:
     """Return the results of a google search
 
@@ -32,8 +31,7 @@ def google_search(query: str, num_results: int = 8) -> str:
 
     return json.dumps(search_results, ensure_ascii=False, indent=4)
 
-
-def google_official_search(query: str, num_results: int = 8) -> Union[str, List[str]]:
+def google_official_search(query: str, num_results: int = 8) -> str:
     """Return the results of a google search using the official Google API
 
     Args:
@@ -82,5 +80,8 @@ def google_official_search(query: str, num_results: int = 8) -> Union[str, List[
         else:
             return f"Error: {e}"
 
-    # Return the list of search result URLs
-    return search_results_links
+    # Join the list of search result URLs into a single string
+    result_string = "\n".join(search_results_links)
+
+    # Return the string of search result URLs
+    return result_string
