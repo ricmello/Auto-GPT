@@ -20,7 +20,12 @@ class MilvusMemory(MemoryProviderSingleton):
             cfg (Config): Auto-GPT global config.
         """
         # connect to milvus server.
-        connections.connect(address=cfg.milvus_addr)
+        connections.connect(
+            uri=cfg.milvus_uri,
+            user=cfg.milvus_user,
+            password=cfg.milvus_password,
+            secure=True
+        )
         fields = [
             FieldSchema(name="pk", dtype=DataType.INT64, is_primary=True, auto_id=True),
             FieldSchema(name="embeddings", dtype=DataType.FLOAT_VECTOR, dim=1536),
